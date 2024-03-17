@@ -4,7 +4,20 @@ import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { colors } from "../../utils/colors";
 
+const tabs = [
+  {
+    name: "index",
+    title: "Home",
+    icon: "home",
+  },
+  {
+    name: "history",
+    title: "History",
+    icon: "history",
+  },
+] as const;
 export default function TabsLayout() {
+  // Our tabs in the bottom of the screen
   return (
     <Tabs
       screenOptions={{
@@ -12,33 +25,18 @@ export default function TabsLayout() {
         headerShown: false,
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="history"
-        options={{
-          title: "History",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="history" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="user" color={color} />
-          ),
-        }}
-      />
+      {tabs.map((tab) => (
+        <Tabs.Screen
+          key={tab.name}
+          name={tab.name}
+          options={{
+            title: tab.title,
+            tabBarIcon: ({ color }) => (
+              <FontAwesome size={28} name={tab.icon} color={color} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
 }

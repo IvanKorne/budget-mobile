@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { colors } from "../../utils/colors";
 import { client } from "../../utils/kindeConfig";
 //@ts-ignore
@@ -18,7 +18,10 @@ const Login = () => {
   };
   return (
     <View style={{ display: "flex", alignItems: "center" }}>
-      <Image source={logo} style={styles.bgImage}></Image>
+      <Image
+        source={logo}
+        style={{ width: 200, height: 400, marginTop: 50 }}
+      ></Image>
       <View
         style={{
           backgroundColor: colors.Primary,
@@ -33,7 +36,7 @@ const Login = () => {
         <Text
           style={{
             fontSize: 40,
-            fontWeight: "bold",
+            fontFamily: "outfit-bold",
             textAlign: "center",
             color: colors.White,
           }}
@@ -51,7 +54,16 @@ const Login = () => {
         >
           Stay on Track of Your Expenses, Stay on Track of Your Life.
         </Text>
-        <TouchableOpacity style={styles.button} onPress={() => handleSignIn()}>
+        <TouchableOpacity
+          style={{
+            padding: 15,
+            paddingHorizontal: 5,
+            backgroundColor: colors.White,
+            borderRadius: 99,
+            marginTop: 20,
+          }}
+          onPress={() => handleSignIn()}
+        >
           <Text style={{ textAlign: "center", color: colors.Primary }}>
             Login/Signup
           </Text>
@@ -71,18 +83,4 @@ const Login = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  bgImage: {
-    width: 200,
-    height: 400,
-    marginTop: 50,
-  },
-  button: {
-    padding: 15,
-    paddingHorizontal: 5,
-    backgroundColor: colors.White,
-    borderRadius: 99,
-    marginTop: 20,
-  },
-});
 export default Login;
